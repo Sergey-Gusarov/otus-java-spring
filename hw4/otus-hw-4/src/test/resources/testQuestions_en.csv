@@ -1,0 +1,6 @@
+Id,Question,CheckScore,Answer1,Score1,Answer2,Score2,Answer3,Score3,Answer4,Score4
+1,Who testing?,1,"Who I am, where i am?",0,Incognito,0,Iurii Dvorzhetskii(by MFA),1,examining,0
+2,"To be, or not to be, that is the question",2,norm,0,"The Prince of Denmarke had to go to work, what would any garbage not climbed in the head",1,"Of course be and teach Java Spring",1,"Go watch football and drink beer",0
+3,What is GC?,1,Garbage Collector,1,Evil itself,0,Compiler,0,Not obvious from context,0
+4,Hundred to one,1, Game show,1, When summer began and everyone is on vacation,0, 100 ref,0, Designation in database design,0
+5,What to read?,2,About Spring 5,1,jUnit 5,1,About cats,0,"The old code of coursework in C plus plus, which did for the whole group of structures and algorithms",0
