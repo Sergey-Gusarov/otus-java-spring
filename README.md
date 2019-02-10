@@ -41,7 +41,7 @@ Ecosystem:
 > - H2
  
 #### Занятие 8
-#### [Spring JPA](#### [Spring JPA](https://github.com/Sergey-Gusarov/otus-java-spring/tree/master/hw8/otus-hw-8))
+#### [Spring JPA (Hibernate)](https://github.com/Sergey-Gusarov/otus-java-spring/tree/master/hw8/otus-hw-8)
 Переписать приложение для хранения книг с использованием ORM. Использовать JPA, Hibernate только в качестве JPA-провайдера.
 Покрыть DAO тестами используя H2 базу данных и соответствующий H2 Hibernate-диалект. <br>
 Ecosystem:
