@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit book</title>
+
+    <style type="text/css">
+        body {
+            padding: 30px;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        input:read-only {
+            background: lightgray;
+        }
+
+        .row {
+            margin-top: 10px;
+        }
+
+        table.blueTable {
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 50%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 13px;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+        table.blueTable thead {
+            background: #1C6EA4;
+            background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+            border-bottom: 2px solid #444444;
+        }
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #D0E4F5;
+            background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+            border-top: 2px solid #444444;
+        }
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<a href="books">Show list of books</a>
+<!-- Book edition -->
+<form id="edit-form" th:action="@{/book(id=${book.id})}" th:method="post" action="bookEdit.html">
+    <h1>Book Info:</h1>
+
+    <div class="row">
+        <label for="id-input">ID:</label>
+        <input id="id-input" type="text" readonly="readonly" th:value="${book.id}" value="1"/>
+    </div>
+
+    <div class="row">
+        <label for="holder-input">Title:</label>
+        <input id="holder-input" name="title" type="text" th:value="${book.title}" value="Book1"/>
+    </div>
+
+    <h2>Genres</h2>
+    <div id="divGenres">
+        <fieldset>
+            <table align="left" width="50%" class="blueTable">
+                <tr>
+                    <th>Genre</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="genre, itemStat : ${book.genres}">
+                    <td><input type="text" th:field="${book.genres[__${itemStat.index}__].name}"/></td>
+                    <td width="5%"><a th:href="@{/delGenreForBook(id=${book.id}, genreNum=${__${itemStat.index}__})}" href="bookEdit.html">Del</a><td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <a th:href="@{/newGenreForBook(id=${book.id})}" href="bookEdit.html">Add genre</a>
+
+
+    <div id="divAuthors" class=primer>
+        <h2>Authors</h2>
+        <fieldset>
+            <table align="left" width="50%" class="blueTable">
+                <tr>
+                    <th>Author id</th>
+                    <th>Author name</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="author, itemStat : ${book.authors}">
+                    <td><input type="text" readonly="readonly" th:field="${book.authors[__${itemStat.index}__].id}"/></td>
+                    <td><input type="text" readonly="readonly" th:field="${book.authors[__${itemStat.index}__].name}"/></td>
+                    <td width="5%"><a th:href="@{/delAuthorFromBook(id=${book.id},authorId=${book.authors[__${itemStat.index}__].id})}" href="bookEdit.html">Del</a><td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <a th:href="@{/newAuthorForBook(id=${book.id})}" href="authorEdit.html">Add author</a>
+
+    <h2>Comments</h2>
+    <div id="divComments">
+        <fieldset>
+            <table align="left" width="50%" class="blueTable">
+                <tr>
+                    <th>Comment</th>
+                    <th>Action</th>
+                </tr>
+                <tr th:each="comment, itemStat : ${book.bookComments}">
+                    <td><input type="text" th:field="${book.bookComments[__${itemStat.index}__].text}"/></td>
+                    <td width="5%"><a th:href="@{/delCommentForBook(id=${book.id}, commentNum=${__${itemStat.index}__})}" href="bookEdit.html">Del</a><td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+    <a th:href="@{/newCommentForBook(id=${book.id})}" href="bookEdit.html">Add comment</a>
+
+    <div class="row">
+        <button type="submit">Save</button>
+    </div>
+</form>
+
+</body>
+</html>
