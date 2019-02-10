@@ -1,0 +1,30 @@
+spring:
+      data:
+          mongodb:
+                uri: mongodb://mongocontainer:27017/mongo_otus                
+logging:
+      level:
+            root: INFO
+      pattern:
+        console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+        file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+      file: application.log
+error:
+  message: Name is required!
+
+management:
+  endpoints:
+    web:
+      # base-path: /
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: info, health # '*'
+
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    logfile:
+      enabled: true

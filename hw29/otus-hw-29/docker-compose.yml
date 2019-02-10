@@ -1,0 +1,14 @@
+version: "3"
+services:
+    mongodb:
+      container_name: mongocontainer
+      image: mongo:3.6
+      command: --smallfiles
+      volumes:
+        - ./otus29:/data/db
+      ports:
+          - 27017:27017
+    app:
+      image: otus29:1.0
+      ports:
+        - 8080:8080
