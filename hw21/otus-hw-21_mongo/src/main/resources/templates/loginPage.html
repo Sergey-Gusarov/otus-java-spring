@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentication</title>
+</head>
+<body>
+<form id="authenticationForm" class="authenticationForm" method="post" action="/loginPage">
+    <div class="row">
+        <label for="username">Login:</label>
+        <input id="username" name= "username" type="text" value=""/>
+    </div>
+
+    <div class="row">
+        <label for="password">Password:</label>
+        <input id="password" name="password" type="password" value=""/>
+    </div>
+
+    <div class="row">
+        <button type="submit">Login</button>
+    </div>
+</form>
+
+<div th:if="${error}" th:utext="${errorText}" style="color:red;font-style:italic;">
+
+</div>
+
+</body>
+</html>
