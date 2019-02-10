@@ -179,7 +179,7 @@ Ecosystem:
 > - Docker
 
 #### Занятие 31
-#### [Spring Boot + Docker](https://github.com/Sergey-Gusarov/otus-java-spring/tree/master/hw31/otus-hw-31)
+#### [Hystrix](https://github.com/Sergey-Gusarov/otus-java-spring/tree/master/hw31/otus-hw-31)
 Обернуть внешние вызовы в Hystrix. 
 Обернуть все внешние вызовы в Hystrix, Hystrix Javanica. Опционально: Поднять Turbine Dashboard для мониторинга.
 > - Spring Boot
