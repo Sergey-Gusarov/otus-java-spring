@@ -1,0 +1,3 @@
+question:
+  max: 4
+  source: src/main/resources/testQuestions.csv
